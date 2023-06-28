@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .kartikeya_title {
+            font-family: Death Note Font;
+            padding-top: 4px;
+            padding-bottom: 11px;
+            padding-right: 12px;
+            color: teal;
+            text-decoration: none;
+            text-decoration: bolder;
+        }
+        .welcome_line {
+            margin-top: auto;
+        }
+
+        h2 {
+            font-family: Death Note Font;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #banner {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            padding-bottom: 19px;
+            border-radius: 4px;
+        }
+
+        .bodytext {
+            text-align: center;
+            color: teal;
+            padding-top: 34px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        #contactbutton {
+            border-width: 1px;
+            border-color: turquoise;
+            background-color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: turquoise;
+            height: 45px;
+            width: 100px;
+
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashynote</title>
+</head>
+
+<body style="margin-top: 75px;">
+    {% include 'nav.html' %}
+    <img id="banner"
+        src="https://images.unsplash.com/photo-1527656855834-0235e41779fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80">
+    <div id="container">
+        <h1 class="welcome_line">Welcome to Cashynote!</h1>
+        <div class="row">
+            <p class="bodytext col-md-6">Cashynote is a trusted-platform that allows you to manage your business or personal
+                finance
+                without any trouble. Cashynote provides you with a series of calculations that are computer-based which
+                can
+                be done and can aslo help to predict business perfomance in the future. Cashynote allows you to secure
+                your
+                transactions and log them and keep the business run without any extra expenditure. Also, for personal
+                use,
+                Cashynote encourages on to set budget and log finance without giving bank or card details which make it
+                safe
+                to use but requires your convenience with the least effort from our side. With out diligent staff's effort we establish a safe financial and monetary problems to be avoided at any costs. With out staff, you can get a 24/7 support from our side.</p>
+                <img style="border-radius: 20px;" class="d-none d-md-block col-6" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" height="320px" width="220px">
+            </div>
+
+        <h2 style="padding-top: 34px; padding-bottom: 19px;">Jobs Available</h2>
+        <p>
+            {% for job in jobs %}
+            {% include 'jobitem.html' %}
+            {% endfor %}
+        </p>
+        <div style="text-align: center; padding-top: 13px"><a href="mailto:kgupta.pvt@gmail.com?subject=Question%20about%20Jobs%20Available&body=My%20Name%20%3A%20%3Cyour%20name%20goes%20here%3E%0D%0A%0D%0AMy%20Query%20%3A%20%3Cyour%20query%20goes%20here%3E%0D%0A%0D%0A"><button id="contactbutton">Contact us</button><br /></a>
+
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>
