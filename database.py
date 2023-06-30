@@ -1,8 +1,10 @@
 import sqlalchemy
 from sqlalchemy import create_engine, text
 import ssl
+import os
+from os import environ
 
-db_connection_string = "mysql+pymysql://w760pvrule6vd6p9gqpz:pscale_pw_rUoEg4yD8GSNoLV9SjjdXp9BOOIkKrmuEflpIqKtWgz@aws.connect.psdb.cloud/cashynote?charset=utf8mb4"
+db_connection_string = os.environ["DB_CONNECTION_STRING"]
 
 engine = create_engine(
     db_connection_string, connect_args={"ssl": {"ssl_ca": "/etc/ssl/cert.pem"}}
