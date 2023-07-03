@@ -5,10 +5,10 @@ import ssl
 import os
 from os import environ
 
-db_connection_string = "mysql+pymysql://fajedmn1l900l4mjmbtz:pscale_pw_72G5MdvMnGUiOkPreGoJg5mqXKbj2eHLFFSAVQQ1KvF@aws.connect.psdb.cloud/cashynote?charset=utf8mb4"
+db_connection_string = "mysql+pymysql://etaz9j8b6c1irzuz5fvp:pscale_pw_WFQzD6cicM18jd08OorotjDSq4gTGIgotjt8KfkIkhx@aws.connect.psdb.cloud/cashynote"
 
-engine = create_engine(
-    db_connection_string, connect_args={"ssl": {"ssl_ca": "/etc/ssl/cert.pem"}}
+engine = create_engine(db_connection_string,
+    connect_args={"ssl": {"ssl_ca": "/etc/ssl/cert.pem"}},
 )
 
 
