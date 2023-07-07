@@ -12,6 +12,7 @@ from sqlalchemy import text
 from sqlalchemy import create_engine, engine
 import ssl
 
+
 load_dotenv()
 
 app = Flask(__name__)
