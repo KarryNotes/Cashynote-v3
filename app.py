@@ -57,14 +57,10 @@ def load_job_from_db():
     else:
         return dict(rows[0])
 
-
-
 @app.route("/")
 def hello():
     jobs = load_jobs_from_db()
     return render_template("home.html", jobs=jobs, company_name="Cashynote")
-
-
 
 @app.route("/api/jobs")
 def list_jobs():
