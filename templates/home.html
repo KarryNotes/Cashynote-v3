@@ -53,16 +53,13 @@
 
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include 'bootstrap.html' %}
     <title>Cashynote</title>
 </head>
 
 <body style="margin-top: 75px;">
     {% include 'nav.html' %}
-    <img id="banner"
-        src="https://images.unsplash.com/photo-1527656855834-0235e41779fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80">
+    {% include 'banner.html' %}
     <div id="container">
         <h1 class="welcome_line">Welcome to Cashynote!</h1>
         <div class="row">

@@ -2,18 +2,94 @@
 <html lang="en">
 
 <head>
+    <style>
+        .kartikeya_title {
+            font-family: Death Note Font;
+            padding-top: 4px;
+            padding-bottom: 11px;
+            padding-right: 12px;
+            color: teal;
+            text-decoration: none;
+            text-decoration: bolder;
+        }
+        .welcome_line {
+            margin-top: auto;
+        }
+
+        h2 {
+            font-family: Death Note Font;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #banner {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            padding-bottom: 19px;
+            border-radius: 4px;
+        }
+
+        .bodytext {
+            text-align: center;
+            color: teal;
+            padding-top: 34px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        #contactbutton {
+            border-width: 1px;
+            border-color: turquoise;
+            background-color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: turquoise;
+            height: 45px;
+            width: 100px;
+
+        }
+    </style>
     <title>{{job.title}} - Cashynote</title>
 </head>
-
+{% include 'bootstrap.html' %}
 <body>
-    <h3>Title</h3>
-    <p>{{job.title}}</p>
-    <h3>Salary</h3>
-    <p>{{job.currency}}{{job.salary}}</p>
-    <h3>Location</h3>
-    <p>{{job.location}}</p>
-    <h3>Responsbilities</h3>
-    <p>{{job.responsbilities}}</p>
+  {% include 'nav.html' %}
+  {% include 'banner.html' %}
+   <div id="container">
+        <h1 class="welcome_line" style="color:teal">Welcome to Cashynote!</h1>
+   </div>
+  <div class="container">
+        <h4 style="font-family: papyrus">{{job.title}}</h4>
+        <div>
+            <b>Location : </b>{{job['location']}}
+        </div>
+        <div>
+            <b>Salary : </b>{{job['salary']}}
+        </div>
+        <div>
+            <b>Currency : </b>{{job['currency']}}
+        </div>
+        <div>
+            <b>Responsbilities : </b>
+          <ul>
+            {% for line in job.responsbilities.split("\n") %}
+            <li>{{line}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div>
+            <b>Requirements : </b>{{job['requirements']}}
+        </div>
+    </div>
+
+ <div style="text-align: center; padding-top: 13px"><a href="mailto:kgupta.pvt@gmail.com?subject=Question%20about%20Jobs%20Available&body=My%20Name%20%3A%20%3Cyour%20name%20goes%20here%3E%0D%0A%0D%0AMy%20Query%20%3A%20%3Cyour%20query%20goes%20here%3E%0D%0A%0D%0A"><button id="contactbutton">Contact us</button><br /></a>
+  
+  {% include 'footer.html' %}
+  
 </body>
 
 </html>

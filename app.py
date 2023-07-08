@@ -39,12 +39,13 @@ def load_jobs_from_db():
     jobs = []
   for row in result:
     jobs.append(({
+      "id": row.id,
       "title": row.title,
       "location": row.location,
       "salary": row.salary,
       "currency": row.currency,
       "responsbilities": row.responsbilities,
-      "requirements": row.requirements
+      "requirements": row.requirements,
     }))
   print({
     "title": row.title,
@@ -61,10 +62,10 @@ def load_job_from_db(id):
   with engine.connect() as conn:
     result = conn.execute(text(f"SELECT * FROM jobs WHERE id = {id}")).first()
     print(id)
-    if len(result) == 0:
-      return None
-    else:
+    if result:
       return result
+    else:
+      return None
 
 
 @app.route("/")
@@ -82,6 +83,9 @@ def list_jobs():
 @app.route("/job/<id>")
 def show_job(id):
   job = load_job_from_db(id)
+
+  if not job:
+    return "No job with given id exists!", 404
   return render_template('jobpage.html', job=job)
 
 
