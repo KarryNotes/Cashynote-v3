@@ -65,7 +65,8 @@ def load_job_from_db(id):
     else:
       return None
 
-def 
+def add_application_to_db(job_id, application):
+   #return None(continue from here)
 
 
 @app.route("/")
