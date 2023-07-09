@@ -2,8 +2,7 @@ from flask import Flask, request, render_template, jsonify
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import os
-from sqlalchemy import text
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 load_dotenv()
 
@@ -45,15 +44,6 @@ def load_jobs_from_db():
       "responsbilities": row.responsbilities,
       "requirements": row.requirements,
     }))
-  print({
-    "title": row.title,
-    "location": row.location,
-    "salary": row.salary,
-    "currency": row.currency,
-    "responsbilities": row.responsbilities,
-    "requirements": row.requirements
-  })
-  return jobs
 
 
 def load_job_from_db(id):
@@ -65,8 +55,22 @@ def load_job_from_db(id):
     else:
       return None
 
-def add_application_to_db(job_id, application):
-   #return None(continue from here)
+
+def add_application_to_db(job_id, data):
+  with engine.connect() as conn:
+    query = text(
+      "INSERT INTO APPLICATIONS (job_id, first_name, last_name, email, linkedin_url, education, work_experience, resume_url) VALUES(:job_id, :full_name, :email, :linkedin_url, :education, :work_experience, :resume_ur)"
+    )
+  add_application_to_db(job_id, data)
+  conn.execute(query,
+               job_id=job_id,
+               first_name=data['first_name'],
+               last_name=data['last_name'],
+               email=data['email'],
+               education=data['education'],
+               work_experience=data['work_experience'],
+               resume_url=data['resume_url'])
+  job_id = job_id
 
 
 @app.route("/")
@@ -94,12 +98,12 @@ def show_job(id):
 def apply_to_job(id):
   data = request.form
   job = load_job_from_db(id)
-  
+  add_application_to_db(id, data)
+  return render_template('application_submitted.html', application=data, job=job)
+
   #send an email
   #display an acknowledgement
-  return render_template('application_submitted.html',
-                         application=data,
-                         job=job)
+
 
 
 if __name__ == "__main__":

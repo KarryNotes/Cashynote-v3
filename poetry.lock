@@ -107,6 +107,30 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "mysql-connector-python"
+version = "8.0.33"
+description = "MySQL driver written in Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+protobuf = ">=3.11.0,<=3.20.3"
+
+[package.extras]
+compression = ["lz4 (>=2.1.6,<=4.3.2)", "zstandard (>=0.12.0,<=0.19.0)"]
+dns-srv = ["dnspython (>=1.16.0,<=2.3.0)"]
+gssapi = ["gssapi (>=1.6.9,<=1.8.2)"]
+
+[[package]]
+name = "protobuf"
+version = "3.20.3"
+description = "Protocol Buffers"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "python-dotenv"
 version = "1.0.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -178,7 +202,7 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "1368714570c838d59c8756dad695da91574f9c758071656fa23563837137ca22"
+content-hash = "666d7b17667491695b3abb9346c5d9957bb8b1a14467f198b931892f4b73833b"
 
 [metadata.files]
 blinker = []
@@ -191,6 +215,8 @@ greenlet = []
 itsdangerous = []
 jinja2 = []
 markupsafe = []
+mysql-connector-python = []
+protobuf = []
 python-dotenv = []
 sqlalchemy = []
 typing-extensions = []

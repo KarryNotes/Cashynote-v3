@@ -11,6 +11,7 @@ connect = "^0.2"
 Flask = "^2.3.2"
 Flask-SQLAlchemy = "^3.0.5"
 python-dotenv = "^1.0.0"
+mysql-connector-python = "^8.0.33"
 
 [tool.poetry.dev-dependencies]
 
