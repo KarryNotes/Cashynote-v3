@@ -2,28 +2,40 @@
 <html lang="en">
 <head>
    <title>Document</title>
+   {% include 'bootstrap.html' %}
+   {% include 'style.html' %}
 </head>
+ 
 <body>
-  <h4>First Name</h4>
-  <div>{{application['first_name']}}</div>
-  
-  <h4>Last Name</h4>
-  <div>{{application['last_name']}}</div>
-  
-  <h4>Email</h4>
-  <div>{{application['email']}}</div>
+  {% include 'nav.html' %}
+  {% include 'banner.html' %}
 
-  <h4>Education</h4>
-  <div>{{application['education']}}</div>
+  <h1 class="welcome_line" style="color:teal">Welcome to Cashynote!</h1>
+
+  <p> Your Application for the role of <b>{{job['title']}}</b> at Cashynote has been submitted! </p>
   
-  <h4>LinkedIn URL</h4>
-  <div>{{application['linkedin_url']}}</div>
+  <b>First Name</b>
+  <div class="mb-2">{{application['first_name']}}</div>
   
-  <h4>Work Experience</h4>
-  <div>{{application['work_experience']}}</div>
+  <b>Last Name</b>
+  <div class="mb-2">{{application['last_name']}}</div>
   
-  <h4>Resume Link</h4>
+  <b>Email</b>
+  <div class="mb-2">{{application['email']}}</div>
+
+  <b>Education</b>
+  <div class="mb-2">{{application['education']}}</div>
+  
+  <b>LinkedIn URL</b>
+  <div class="mb-2">{{application['linkedin_url']}}</div>
+  
+  <b>Work Experience</b>
+  <div class="mb-2">{{application['work_experience']}}</div>
+  
+  <b>Resume Link</b>
   <div>{{application['resume_url']}}</div>
+
+  {% include 'footer.html' %}
   
 </body>
 </html>

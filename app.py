@@ -65,6 +65,8 @@ def load_job_from_db(id):
     else:
       return None
 
+def 
+
 
 @app.route("/")
 def hello():
@@ -90,10 +92,13 @@ def show_job(id):
 @app.route("/job/<id>/apply", methods=['post'])
 def apply_to_job(id):
   data = request.form
-  #store this in db
+  job = load_job_from_db(id)
+  
   #send an email
   #display an acknowledgement
-  return render_template('application_submitted.html', application=data)
+  return render_template('application_submitted.html',
+                         application=data,
+                         job=job)
 
 
 if __name__ == "__main__":
