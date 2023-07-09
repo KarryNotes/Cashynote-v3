@@ -1,6 +1,4 @@
-from flask import Flask
-from flask import render_template
-from flask import jsonify
+from flask import Flask, request, render_template, jsonify
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -87,6 +85,15 @@ def show_job(id):
   if not job:
     return "No job with given id exists!", 404
   return render_template('jobpage.html', job=job)
+
+
+@app.route("/job/<id>/apply", methods=['post'])
+def apply_to_job(id):
+  data = request.form
+  #store this in db
+  #send an email
+  #display an acknowledgement
+  return render_template('application_submitted.html', application=data)
 
 
 if __name__ == "__main__":
