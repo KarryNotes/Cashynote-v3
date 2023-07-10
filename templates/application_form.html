@@ -2,32 +2,32 @@
 <form action="/job/{{job['id']}}/apply" method="post">
   <div class="mb-2">
   <label>First Name</label></br>
-  <input type="text" name="first_name" placeholder="First Name"></br>
+  <input type="text" name="first_name" placeholder="First Name" required></br>
   </div>
   <div class="mb-2">
   <label>Last Name</label></br>
-  <input type="text" name="last_name" placeholder="Last Name"></br>
+  <input type="text" name="last_name" placeholder="Last Name" required></br>
   </div>
  <div class="mb-2">
    <label>Email</label></br>
-  <input type="text" name="email" placeholder="Your email address"></br>
+  <input type="email" name="email" placeholder="Your email address" required></br>
  </div>
   <div class="mb-2">
   <label>LinkedIn URL</br>
-  <input type="text" name="linkedin_url" placeholder="Your LinkedIn account 
-    link"></br>
+  <input type="url" name="linkedin_url" placeholder="Your LinkedIn account 
+    link" required></br>
   </div>
   <div class="mb-2">
    <label>Educational</label></br>
-  <textarea name="education" placeholder="Give insights about your educational"></textarea></br>
+  <textarea name="education" placeholder="Give insights about your educational" required></textarea></br>
  </div>
   <div class="mb-2">
    <label>Work Experience</label></br>
-  <textarea name="work_experience" placeholder="Tell us about your work experience"></textarea></br>
+  <textarea name="work_experience" placeholder="Tell us about your work experience" required></textarea></br>
  </div>
   <div class="mb-2">
    <label>Resume Link</label></br>
-  <input type="text" name="resume_url" placeholder="Your resume link goes here"></br>
+  <input type="url" name="resume_url" placeholder="Your resume link goes here" required></br>
  </div>
   <input type="submit" value="Submit Application">
 </form>

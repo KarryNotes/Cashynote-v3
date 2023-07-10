@@ -26,6 +26,7 @@ db_connection_string = os.environ['DB_CONNECTION_STRING']
 
 engine = create_engine(dbConnectionStr)
 
+
 def load_jobs_from_db():
   with engine.connect() as conn:
     result = conn.execute(text("select * from jobs"))
@@ -39,8 +40,9 @@ def load_jobs_from_db():
       "currency": row.currency,
       "responsbilities": row.responsbilities,
       "requirements": row.requirements,
-      }))
+    }))
   return jobs
+
 
 def load_job_from_db(id):
   with engine.connect() as conn:
@@ -50,31 +52,27 @@ def load_job_from_db(id):
     else:
       return None
 
+
 def add_application_to_db(job_id, data):
   with engine.connect() as conn:
-    query = text(
-      "INSERT INTO APPLICATIONS (job_id, first_name, last_name, email, linkedin_url, education, work_experience, resume_url) VALUES(:job_id, :full_name, :email, :linkedin_url, :education, :work_experience, :resume_ur)"
-    )
-  add_application_to_db(job_id, data)
-  conn.execute(query,
-               job_id=job_id,
-               first_name=data['first_name'],
-               last_name=data['last_name'],
-               email=data['email'],
-               education=data['education'],
-               work_experience=data['work_experience'],
-               resume_url=data['resume_url'])
+    conn.execute(
+      text(
+        f"INSERT INTO applications (job_id, first_name, last_name, email,  education, linkedin_url, work_experience, resume_url) VALUES({job_id}, '{data['first_name']}', '{data['last_name']}', '{data['email']}',  '{data['education']}', '{data['linkedin_url']}', '{data['work_experience']}', '{data['resume_url']}')"
+      ))
   job_id = job_id
+
 
 @app.route("/")
 def hello():
   jobs = load_jobs_from_db()
   return render_template("home.html", jobs=jobs)
 
+
 @app.route("/api/jobs")
 def list_jobs():
   jobs = load_jobs_from_db()
   return jsonify(jobs)
+
 
 @app.route("/job/<id>")
 def show_job(id):
@@ -83,13 +81,15 @@ def show_job(id):
     return "No job with given id exists!", 404
   return render_template('jobpage.html', job=job)
 
+
 @app.route('/job/<id>/apply', methods=['post'])
 def apply_to_job(id):
   job = load_job_from_db(id)
   data = request.form
-  return render_template('application_submitted.html', applications=data, job=job)
-  
-app.run(host='0.0.0.0', port=81, debug=True)
+  add_application_to_db(id, data)
+  return render_template('application_submitted.html',
+                         applications=data,
+                         job=job)
 
 
 app.run(host="0.0.0.0", debug=True)
