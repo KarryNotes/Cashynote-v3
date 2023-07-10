@@ -43,13 +43,12 @@ def load_jobs_from_db():
       "currency": row.currency,
       "responsbilities": row.responsbilities,
       "requirements": row.requirements,
-    }))
-
+      }))
+  return jobs
 
 def load_job_from_db(id):
   with engine.connect() as conn:
     result = conn.execute(text(f"SELECT * FROM jobs WHERE id = {id}")).first()
-    print(id)
     if result:
       return result
     else:
@@ -88,7 +87,6 @@ def list_jobs():
 @app.route("/job/<id>")
 def show_job(id):
   job = load_job_from_db(id)
-
   if not job:
     return "No job with given id exists!", 404
   return render_template('jobpage.html', job=job)
@@ -99,13 +97,9 @@ def apply_to_job(id):
   data = request.form
   job = load_job_from_db(id)
   add_application_to_db(id, data)
-  return render_template('application_submitted.html',
-                         application=data,
+  return jsonify('application_submitted.html',
+                         applications=data,
                          job=job)
-
-  #send an email
-  #display an acknowledgement
-
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", debug=True)
