@@ -1,3 +1,4 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <h4>Application Form</h4>
 <form action="/job/{{job['id']}}/apply" method="post">
   <div class="mb-2">
@@ -29,5 +30,6 @@
    <label>Resume Link</label></br>
   <input type="url" name="resume_url" placeholder="Your resume link goes here" required></br>
  </div>
+  <div class="g-recaptcha" data-sitekey="6Lcm-BAnAAAAAFzyVWZ9KiUsgjTt_5MnahASRnqr"></div>
   <input type="submit" value="Submit Application">
 </form>
